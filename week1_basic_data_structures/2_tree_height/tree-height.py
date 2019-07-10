@@ -8,6 +8,7 @@ class TreeHeight:
         def read(self):
                 self.n = int(sys.stdin.readline())
                 self.parent = list(map(int, sys.stdin.readline().split()))
+                self.heightLst = [None]*self.n
 
         def compute_height(self):
                 # Replace this code with a faster implementation
@@ -18,6 +19,10 @@ class TreeHeight:
                         while i != -1:
                                 height += 1
                                 i = self.parent[i]
+                                if self.heightLst[i] is not None :
+                                        height += self.heightLst[i]
+                                        break
+                        self.heightLst[vertex] = height
                         maxHeight = max(maxHeight, height);
                 return maxHeight;
 
